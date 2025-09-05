@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林柔均 | 行銷企劃履歷</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    border: "var(--border)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                }
+            },
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --background: hsl(195 50% 98%);
+            --foreground: hsl(210 40% 30%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(210 40% 30%);
+            --primary: hsl(168 35% 50%);
+            --primary-foreground: hsl(0 0% 100%);
+            --secondary: hsl(180 35% 85%);
+            --secondary-foreground: hsl(210 40% 30%);
+            --muted: hsl(195 20% 95%);
+            --muted-foreground: hsl(210 40% 45%);
+            --accent: hsl(185 45% 75%);
+            --accent-foreground: hsl(210 40% 30%);
+            --border: hsl(195 20% 88%);
+            --ring: hsl(168 35% 50%);
+            --radius: 12px;
+            --font-sans: 'Noto Sans TC', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--foreground);
+            background-color: var(--background);
+            scroll-behavior: smooth;
+        }
+
+        /* Header Animations */
+        .slide-up {
+            animation: slideUp 1.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        .slide-up-delay {
+            animation: slideUp 1.5s ease-out 0.5s forwards;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Wave Background */
+        .wave-bg {
+            background: linear-gradient(135deg, hsl(168 35% 50%) 0%, hsl(210 85% 60%) 50%, hsl(185 45% 75%) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-bg::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23f7fbfb" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,122.7C960,139,1056,149,1152,144C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        /* Floating geometric shapes */
+        .geometric-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .geometric-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .geometric-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .geometric-shape:nth-child(3) {
+            top: 40%;
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card hover effects */
+        .interactive-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            transition: transform 0.5s ease;
+        }
+
+        .interactive-card:hover .skill-icon {
+            transform: rotate(360deg);
+        }
+
+        /* Timeline styles */
+        .timeline-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 2rem 0;
+            gap: 2rem;
+            scroll-snap-type: x mandatory;
+        }
+
+        .timeline-item {
+            flex: 0 0 350px;
+            scroll-snap-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-12px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary);
+            border: 3px solid white;
+            border-radius: 50%;
+            top: 50%;
+            left: -27px;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        /* Personality report expandable cards */
+        .expandable-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .expandable-card:hover {
+            transform: scale(1.02);
+        }
+
+        .expandable-content {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+        }
+
+        .expandable-content.expanded {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        /* Pulse effect */
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Portfolio grid with left borders */
+        .portfolio-item {
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-left-color: var(--accent);
+        }
+
+        /* Contact hover effects */
+        .contact-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: hsl(180 35% 85%);
+            transform: translateY(-2px);
+        }
+
+        /* Radar chart container */
+        .radar-chart-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Custom scrollbar for timeline */
+        .timeline-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline-container::-webkit-scrollbar-track {
+            background: var(--muted);
+            border-radius: 4px;
+        }
+
+        .timeline-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .timeline-container::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section with Dynamic Background -->
+    <header class="wave-bg min-h-screen flex items-center justify-center relative">
+        <!-- Floating geometric shapes -->
+        <div class="geometric-shape w-20 h-20 bg-white rounded-full"></div>
+        <div class="geometric-shape w-16 h-16 bg-white transform rotate-45"></div>
+        <div class="geometric-shape w-12 h-12 bg-white rounded-full"></div>
+        
+        <div class="container mx-auto px-6 text-center text-white relative z-10">
+            <!-- Profile image with entrance animation -->
+            <div class="slide-up mb-8">
+                <!-- Professional headshot placeholder -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" 
+                     alt="林柔均個人照片" 
+                     class="w-40 h-40 rounded-full mx-auto border-4 border-white shadow-2xl object-cover" />
+            </div>
+            
+            <!-- Name sliding up from bottom -->
+            <h1 class="slide-up text-6xl md:text-8xl font-bold mb-4 tracking-wide">林柔均</h1>
+            
+            <!-- Tagline sliding up with delay -->
+            <p class="slide-up-delay text-2xl md:text-3xl font-light opacity-90">熱忱與創意兼具的行銷企劃人</p>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-white text-2xl"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about-me" class="py-20 fade-in">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12 relative">
+                關於我
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-secondary rounded-full"></div>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-card p-8 rounded-2xl shadow-xl interactive-card">
+                    <p class="text-lg leading-relaxed text-card-foreground">
+                        我是應屆大學畢業生，對行銷企劃充滿熱情，特別是品牌行銷與視覺設計。曾參與政府開設的職業訓練課程，累積了三個月的行銷實務與工具應用經驗。我熟悉 <strong class="text-primary">Canva 設計基礎</strong>，並能運用多種 AI 工具，如 ChatGPT、Gemini、NotebookLM、X-Mind、Bing Image Creator 等，來輔助內容企劃與視覺設計。
+                    </p>
+                    <br>
+                    <p class="text-lg leading-relaxed text-card-foreground">
+                        雖然目前相關經驗尚淺，但我具備高度的<strong class="text-primary">學習力與執行力</strong>，期望將所學的理論知識與實務技能，運用於實際的行銷專案中，持續成長並為公司創造價值。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-secondary fade-in">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12 relative">
+                我的技能
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary rounded-full"></div>
+            </h2>
+            
+            <!-- Skills Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Skill Card 1 -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg interactive-card text-center">
+                    <div class="skill-icon text-5xl text-primary mb-4">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-card-foreground">視覺設計</h3>
+                    <p class="text-muted-foreground">具備 Canva、PhotoPea 基礎操作經驗。能獨立完成社群貼文與簡報設計。</p>
+                </div>
+                
+                <!-- Skill Card 2 -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg interactive-card text-center">
+                    <div class="skill-icon text-5xl text-primary mb-4">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-card-foreground">AI 應用</h3>
+                    <p class="text-muted-foreground">熟練運用 ChatGPT、Gemini、NotebookLM 等工具進行內容創作與分析。</p>
+                </div>
+                
+                <!-- Skill Card 3 -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg interactive-card text-center">
+                    <div class="skill-icon text-5xl text-primary mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-card-foreground">數據分析</h3>
+                    <p class="text-muted-foreground">運用 Excel、Google Analytics 基礎功能進行數據整理與分析。</p>
+                </div>
+                
+                <!-- Skill Card 4 -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg interactive-card text-center">
+                    <div class="skill-icon text-5xl text-primary mb-4">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-card-foreground">品牌行銷</h3>
+                    <p class="text-muted-foreground">具備品牌定位、市場調研、行銷策略規劃的理論基礎與實務應用。</p>
+                </div>
+            </div>
+            
+            <!-- Radar Chart -->
+            <div class="bg-card p-8 rounded-2xl shadow-xl max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold text-center mb-6 text-card-foreground">技能熟練度</h3>
+                <div class="radar-chart-container">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-20 fade-in">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12 relative">
+                學經歷時間軸
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-secondary rounded-full"></div>
+            </h2>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="absolute top-1/2 left-8 right-8 h-1 bg-border transform -translate-y-1/2 z-0"></div>
+                
+                <!-- Timeline container with horizontal scroll -->
+                <div class="timeline-container px-8">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item bg-card p-6 rounded-2xl shadow-lg">
+                        <div class="text-sm text-muted-foreground mb-2">2020-2024</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">大學教育</h3>
+                        <p class="text-card-foreground">完成學士學位，奠定紮實的理論基礎，培養批判思考與問題解決能力。</p>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item bg-card p-6 rounded-2xl shadow-lg">
+                        <div class="text-sm text-muted-foreground mb-2">2024年中</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">實習經驗</h3>
+                        <p class="text-card-foreground">參與實際專案，學習團隊合作與職場溝通技巧，累積實務經驗。</p>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item bg-card p-6 rounded-2xl shadow-lg">
+                        <div class="text-sm text-muted-foreground mb-2">2024年下半年</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">職業訓練課程</h3>
+                        <p class="text-card-foreground">參與政府職訓課程，專精行銷企劃與數位工具應用，累積三個月密集訓練經驗。</p>
+                    </div>
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item bg-card p-6 rounded-2xl shadow-lg">
+                        <div class="text-sm text-muted-foreground mb-2">2025</div>
+                        <h3 class="text-xl font-bold text-primary mb-3">職涯新起點</h3>
+                        <p class="text-card-foreground">準備投入行銷企劃領域，期待運用所學技能為企業創造價值。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Report Section -->
+    <section id="personality" class="py-20 bg-gradient-to-br from-primary/10 via-secondary/20 to-accent/10 fade-in">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12 relative">
+                人格特質報告
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-primary rounded-full"></div>
+            </h2>
+            
+            <!-- Core Traits Summary -->
+            <div class="max-w-4xl mx-auto mb-12">
+                <div class="bg-card p-8 rounded-2xl shadow-xl text-center expandable-card" onclick="toggleExpand('summary-content')">
+                    <h3 class="text-2xl font-bold mb-4 text-card-foreground">你的核心特質</h3>
+                    <p class="text-lg text-card-foreground leading-relaxed mb-4">
+                        你是<strong class="text-primary">腳踏實地、溫和可靠的守護者</strong>。你擅長穩定和維護周遭的和諧，並且具備極高的同理心和責任感。
+                    </p>
+                    <div id="summary-content" class="expandable-content">
+                        <p class="text-lg text-muted-foreground leading-relaxed">
+                            你的內在驅動力來自於對穩定和和諧的渴望，當你遵循內心回應時，會感到特別有力量。這種特質讓你在團隊中成為不可或缺的穩定力量。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personality Type Cards -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- ISFJ Card -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg expandable-card" onclick="toggleExpand('isfj-content')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                            ISFJ
+                        </div>
+                        <h3 class="text-xl font-bold text-card-foreground">守衛者</h3>
+                    </div>
+                    <div id="isfj-content" class="expandable-content">
+                        <p class="text-muted-foreground leading-relaxed">
+                            你是一個<strong>非常可靠、有責任感</strong>的人，傾向於腳踏實地，喜歡有規律的生活。在人際關係中，你總是那個<strong>默默支持他人</strong>的守護者。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- DISC Card -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg expandable-card" onclick="toggleExpand('disc-content')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                            S
+                        </div>
+                        <h3 class="text-xl font-bold text-card-foreground">DISC：S 型</h3>
+                    </div>
+                    <div id="disc-content" class="expandable-content">
+                        <p class="text-muted-foreground leading-relaxed">
+                            你的高 S 分數代表你<strong>溫和、有耐心且善於傾聽</strong>。你不喜歡衝突，更傾向於以合作與包容的態度來與人相處。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Human Design Card -->
+                <div class="bg-card p-6 rounded-2xl shadow-lg expandable-card" onclick="toggleExpand('humandesign-content')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-secondary text-primary rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                            HD
+                        </div>
+                        <h3 class="text-xl font-bold text-card-foreground">人類圖：生產者</h3>
+                    </div>
+                    <div id="humandesign-content" class="expandable-content">
+                        <p class="text-muted-foreground leading-relaxed">
+                            作為生產者，你的能量是<strong>持續而穩定</strong>的。你的人生策略是<strong>「等待回應」</strong>，順應內心感受再行動。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenges and Growth -->
+            <div class="bg-card p-8 rounded-2xl shadow-xl max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-center mb-8 text-card-foreground">挑戰與成長方向</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-card-foreground flex items-center">
+                            <span class="pulse-dot w-3 h-3 bg-red-500 rounded-full mr-3"></span>
+                            挑戰
+                        </h4>
+                        <ul class="space-y-3 text-muted-foreground">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                <strong>過度配合</strong>：傾向於照顧他人感受，可能讓你難以拒絕。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                <strong>不善變通</strong>：不喜歡改變，可能讓你錯失一些機會。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                <strong>不主動表達</strong>：在需要果斷決策時可能較為被動。
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-card-foreground flex items-center">
+                            <span class="pulse-dot w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                            成長方向
+                        </h4>
+                        <ul class="space-y-3 text-muted-foreground">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                學習<strong>設立界線</strong>，保護自己的能量。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                在感覺對了的時候，<strong>嘗試新事物</strong>。
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                在需要時，為自己<strong>勇敢發聲</strong>。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 fade-in">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-12 relative">
+                作品集
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-secondary rounded-full"></div>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item bg-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">品牌視覺設計</h3>
+                    <p class="text-muted-foreground mb-4">運用 Canva 設計工具，為虛擬品牌創建完整的視覺識別系統，包含標誌設計、色彩搭配與應用規範。</p>
+                    <div class="text-sm text-accent font-medium">設計工具：Canva, PhotoPea</div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item bg-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">社群媒體企劃</h3>
+                    <p class="text-muted-foreground mb-4">規劃並執行社群平台內容策略，結合 AI 工具進行創意發想與內容優化，提升使用者互動率。</p>
+                    <div class="text-sm text-accent font-medium">工具：ChatGPT, Canva, Analytics</div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item bg-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">市場調研報告</h3>
+                    <p class="text-muted-foreground mb-4">運用數據分析工具深入研究目標市場，製作詳細的競品分析與消費者洞察報告。</p>
+                    <div class="text-sm text-accent font-medium">工具：Excel, Google Forms, X-Mind</div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item bg-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">AI 輔助創意企劃</h3>
+                    <p class="text-muted-foreground mb-4">善用 AI 工具輔助創意發想與內容生成，提高企劃效率並創造更多元的解決方案。</p>
+                    <div class="text-sm text-accent font-medium">工具：ChatGPT, Gemini, NotebookLM</div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item bg-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">品牌策略提案</h3>
+                    <p class="text-muted-foreground mb-4">結合市場調研與創意思維，為企業制定完整的品牌定位與行銷策略，包含執行時程與預算規劃。</p>
+                    <div class="text-sm text-accent font-medium">核心技能：策略思維, 簡報設計</div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item bg-card p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 text-primary">數位行銷專案</h3>
+                    <p class="text-muted-foreground mb-4">整合多平台數位行銷資源，規劃跨渠道整合行銷活動，追蹤成效並持續優化策略執行。</p>
+                    <div class="text-sm text-accent font-medium">平台：Facebook, Instagram, Google Ads</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8">聯絡我</h2>
+            <p class="text-xl mb-12 opacity-90">歡迎與我聯繫，討論合作機會</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                <!-- Email -->
+                <a href="mailto:your.email@example.com" class="contact-link flex items-center text-xl">
+                    <i class="fas fa-envelope mr-3 text-2xl"></i>
+                    your.email@example.com
+                </a>
+                
+                <!-- Phone -->
+                <a href="tel:+886912345678" class="contact-link flex items-center text-xl">
+                    <i class="fas fa-phone mr-3 text-2xl"></i>
+                    +886 912-345-678
+                </a>
+                
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link flex items-center text-xl">
+                    <i class="fab fa-linkedin mr-3 text-2xl"></i>
+                    LinkedIn
+                </a>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-white/20 text-sm opacity-70">
+                <p>此履歷網站展示我的專業技能與創意思維，期待與您的進一步交流。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // IIFE to avoid global pollution
+        (function() {
+            // Scroll animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Expandable card functionality
+            window.toggleExpand = function(contentId) {
+                const content = document.getElementById(contentId);
+                if (content) {
+                    content.classList.toggle('expanded');
+                }
+            };
+
+            // Initialize radar chart after DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                initRadarChart();
+            });
+
+            function initRadarChart() {
+                const ctx = document.getElementById('skillsRadarChart');
+                if (!ctx) return;
+
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['視覺設計', 'AI應用', '數據分析', '品牌行銷', '內容企劃', '專案管理'],
+                        datasets: [{
+                            label: '技能熟練度',
+                            data: [70, 90, 60, 80, 85, 65],
+                            backgroundColor: 'rgba(94, 139, 126, 0.2)',
+                            borderColor: 'rgba(94, 139, 126, 1)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(94, 139, 126, 1)',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2,
+                            pointRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12,
+                                        family: 'Noto Sans TC'
+                                    }
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 14,
+                                        family: 'Noto Sans TC',
+                                        weight: '500'
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add loading animation for images
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>

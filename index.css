@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(195, 50%, 98%);
+  --foreground: hsl(210, 40%, 30%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 40%, 30%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 40%, 30%);
+  --primary: hsl(168, 35%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(180, 35%, 85%);
+  --secondary-foreground: hsl(210, 40%, 30%);
+  --muted: hsl(195, 20%, 95%);
+  --muted-foreground: hsl(210, 40%, 45%);
+  --accent: hsl(185, 45%, 75%);
+  --accent-foreground: hsl(210, 40%, 30%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(195, 20%, 88%);
+  --input: hsl(195, 20%, 95%);
+  --ring: hsl(168, 35%, 50%);
+  --chart-1: hsl(168, 35%, 50%);
+  --chart-2: hsl(159, 100%, 36%);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 78%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(210, 40%, 30%);
+  --sidebar-primary: hsl(168, 35%, 50%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(185, 45%, 75%);
+  --sidebar-accent-foreground: hsl(210, 40%, 30%);
+  --sidebar-border: hsl(195, 20%, 88%);
+  --sidebar-ring: hsl(168, 35%, 50%);
+  --font-sans: 'Noto Sans TC', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 12px;
+  --shadow-2xs: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00);
+  --shadow-xs: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00);
+  --shadow-sm: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00), 0px 1px 2px -1px hsl(168, 35%, 50%, 0.00);
+  --shadow: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00), 0px 1px 2px -1px hsl(168, 35%, 50%, 0.00);
+  --shadow-md: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00), 0px 2px 4px -1px hsl(168, 35%, 50%, 0.00);
+  --shadow-lg: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00), 0px 4px 6px -1px hsl(168, 35%, 50%, 0.00);
+  --shadow-xl: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00), 0px 8px 10px -1px hsl(168, 35%, 50%, 0.00);
+  --shadow-2xl: 0px 2px 0px 0px hsl(168, 35%, 50%, 0.00);
+}
+
+.dark {
+  --background: hsl(210, 40%, 5%);
+  --foreground: hsl(195, 20%, 95%);
+  --card: hsl(210, 40%, 10%);
+  --card-foreground: hsl(195, 20%, 95%);
+  --popover: hsl(210, 40%, 10%);
+  --popover-foreground: hsl(195, 20%, 95%);
+  --primary: hsl(168, 35%, 55%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(180, 20%, 20%);
+  --secondary-foreground: hsl(195, 20%, 95%);
+  --muted: hsl(210, 40%, 15%);
+  --muted-foreground: hsl(195, 20%, 70%);
+  --accent: hsl(185, 30%, 25%);
+  --accent-foreground: hsl(195, 20%, 95%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 40%, 20%);
+  --input: hsl(210, 40%, 15%);
+  --ring: hsl(168, 35%, 55%);
+  --sidebar: hsl(210, 40%, 10%);
+  --sidebar-foreground: hsl(195, 20%, 95%);
+  --sidebar-primary: hsl(168, 35%, 55%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(185, 30%, 25%);
+  --sidebar-accent-foreground: hsl(195, 20%, 95%);
+  --sidebar-border: hsl(210, 40%, 20%);
+  --sidebar-ring: hsl(168, 35%, 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .wave-bg {
+    background: linear-gradient(135deg, hsl(168, 35%, 50%) 0%, hsl(210, 85%, 60%) 50%, hsl(185, 45%, 75%) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wave-bg::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23f7fbfb" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,122.7C960,139,1056,149,1152,144C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+    background-size: cover;
+  }
+
+  .geometric-shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .geometric-shape:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .geometric-shape:nth-child(2) {
+    top: 60%;
+    right: 10%;
+    animation-delay: 2s;
+  }
+
+  .geometric-shape:nth-child(3) {
+    top: 40%;
+    left: 70%;
+    animation-delay: 4s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+
+  .timeline-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .timeline-container::-webkit-scrollbar-track {
+    background: var(--muted);
+    border-radius: 4px;
+  }
+
+  .timeline-container::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+  }
+
+  .timeline-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
